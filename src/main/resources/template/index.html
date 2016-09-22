@@ -1,0 +1,20 @@
+[#ftl]<!DOCTYPE html>
+<html lang="en">
+<head>
+  [#import "layout/html-heads.html" as heads]
+  [@heads.heads title="${title}" /]
+
+  <style>
+    #container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  [#include "layout/header.html"]
+  <div id="container" class="container">
+    <h3><a href="poll">Poll!</a></h3>
+  </div>
+  <script src="[@asset path='js/foo.js' /]"></script>
+</body>
+</html>

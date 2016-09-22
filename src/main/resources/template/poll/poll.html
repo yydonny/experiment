@@ -1,0 +1,52 @@
+[#ftl]<!DOCTYPE html>
+<html>
+<head>
+  <meta name="_csrf" content="${_csrf.token}"/>
+  <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
+  [#import "/layout/html-heads.html" as heads]
+  [@heads.heads title="Poll" /]
+
+  <style>
+    #container {
+      margin-top: 50px;
+    }
+    #poll-options li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container" class="container">
+  <div class="row">
+    <div class="col-xs-2 col-md-2"></div>
+
+    <div id="poll-options" class="col-xs-6 col-md-6">
+      <h3>${poll.text()}</h3>
+      <ul class="list-group">
+        [#list poll.optionList() as option]
+        <li id="poll-${poll.id()}-${option.id()}"
+            class="list-group-item list-group-item-warning">
+          <span class="badge">99</span>
+          ${option.text()}
+        </li>
+        [/#list]
+      </ul>
+    </div>
+
+    <div class="col-xs-2 col-md-2"></div>
+  </div>
+</div>
+
+
+<h4>debug</h4>
+<pre>
+  [#list .data_model?keys as key]
+    ${key}
+  [/#list]
+</pre>
+
+<script src="[@asset path='js/poll.js' /]"></script>
+</body>
+</html>

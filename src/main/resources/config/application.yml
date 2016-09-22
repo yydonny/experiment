@@ -1,0 +1,49 @@
+
+# to select profile: -Dspring.profiles.active=QA1
+
+# ================================ Default ======================================
+spring:
+  profiles:
+    active: QA1
+
+web:
+  templatePath: 'classpath:/non-exist/'
+  templateCache: yes
+
+  assetPrefix: 'https://my-cdn.net/'
+  assetPath: 'classpath:/asset/'
+
+---
+# ================================ Development ==================================
+spring:
+  profiles: development
+
+web:
+  templatePath: 'classpath:/template/'
+  templateCache: no
+
+  # URL prefix for static assets (rendered to views and used by browsers)
+  assetPrefix: '/asset/'
+
+  # Where to find static assets in the project.
+  # Irrelevant if using CDN deployment for assets.
+  assetPath: 'classpath:/asset/'
+
+# Can't use spring-boot's autoconfig as we need to config custom directives
+#  freemarker:
+#    prefix: ''
+#    suffix: '.html'
+#    cache: no
+#    templateLoaderPath:
+
+
+---
+# ================================ QA1 ==================================
+spring:
+  profiles: QA1
+
+web:
+  templatePath: 'classpath:/ttt/'
+  templateCache: no
+  assetPrefix: '/asset/'
+  assetPath: 'classpath:/asset/'
